@@ -1,0 +1,57 @@
+Username: suza
+Email: suza@gmail.com
+Password: suzaSalon022
+
+
+MODELS NOTES
+
+ # class pom_rad(Enum):
+    #     pom_radnici = get_user_model()
+    #     global svi_radnici
+    #     svi_radnici = [x['username'] for x in[a for a in pom_radnici.objects.values('username')]]
+
+izbor_tretmana = models.ForeignKey(Pricelist,blank=True,null=True,on_delete=models.SET_NULL)
+
+def vreme_lista(pom_sati,pom_min):
+    niz=[]
+    for x in range(0,25):
+        if pom_min==0:
+            pom_min=30
+        else:
+            pom_sati+=1
+            pom_min=0
+        niz.append(time(pom_sati,pom_min))
+    return niz
+
+# VREME TRETMANA ATRIBUT
+    # poc_vreme = time.fromisoformat('08:00')
+    pom_sati = 7
+    pom_min = 30
+    svi_tret = [(str(x)+str(y)[:2],y) for x,y in enumerate(vreme_lista(pom_sati,pom_min))]
+    id_tret = [x for x,y in svi_tret]
+    vreme_tret = models.CharField(
+        max_length=4,
+        choices= svi_tret,
+        default= id_tret[0]
+    )
+    
+tip_tret = [ 
+            (estetski_pedikir,"Estetski pedikir"),
+            (medicinski_pedikir,"Medicinski pedikir"),
+            (estetski_manikir,"Estetski manikir")
+    ]
+
+    # class Pricelist(models.Model):
+    
+#     # tip_tret = [ 
+#     #     (estetski_pedikir,"Estetski pedikir"),
+#     #     (medicinski_pedikir,"Medicinski pedikir"),
+#     #     (estetski_manikir,"Estetski manikir")
+#     # ]
+#     id = models.CharField(
+#         max_length=3,
+#         default=estetski_pedikir,
+#         primary_key=True
+#     )
+#     pun_naziv = models.TextField(default="naziv tretmana",max_length=60)
+#     cena_tret = models.IntegerField(default=500)
