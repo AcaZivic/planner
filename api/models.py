@@ -69,19 +69,19 @@ class Pricelist(models.Model):
 
     # METHODS
 
-    def get_all_pricelist(self):
-        query_pricelist = self._meta.model.objects.values('id','pun_naziv','cena_tret')
-        return query_pricelist
+    # def get_all_pricelist(self):
+    #     query_pricelist = self._meta.model.objects.values('id','pun_naziv','cena_tret')
+    #     return query_pricelist
 
-    def __str__(self):
-        # return f"{Reservation.get_all_reservations(Reservation)}"
-        return f"{self.id} - {self.pun_naziv} - {self.cena_tret}"
+    # def __str__(self):
+    #     # return f"{Reservation.get_all_reservations(Reservation)}"
+    #     return f"{self.id} - {self.pun_naziv} - {self.cena_tret}"
     
-    def get_all_tretmans():
-        niz = []
-        for x in Pricelist.get_all_pricelist(Pricelist):
-            niz.append((x['id'],x['pun_naziv']))
-        return niz
+    # def get_all_tretmans():
+    #     niz = []
+    #     for x in Pricelist.get_all_pricelist(Pricelist):
+    #         niz.append((x['id'],x['pun_naziv']))
+    #     return niz
     
     # ORDERING
     class Meta:
@@ -122,8 +122,12 @@ class Reservation(models.Model):
     
     # IZBOR TRETMANA ATRIBUT
 
+    tuple_tretmana = [
+        ('MP','Medicinski pedikir'),
+        ('EP','Estetski pedikir')
+    ]
     izbor_tretmana = models.CharField(
-        choices= Pricelist.get_all_tretmans() ,
+        choices= tuple_tretmana ,
         default='MP',
         max_length=3
     )
