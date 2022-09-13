@@ -23,7 +23,7 @@ def getRoutes(request):
             'izbor_tretmana':'',
             'cena_izabranog_tretmana':0,
             'napomena':'',
-            'datum_tret': NULL,
+            'datum_tret': '',
             'poc_tret': None,
             'kraj_tret': None,
             'desciption':'Returns an array of reservations'
@@ -36,7 +36,7 @@ def getRoutes(request):
             'izbor_tretmana':'',
             'cena_izabranog_tretmana':0,
             'napomena':'',
-            'datum_tret': NULL,
+            'datum_tret': '',
             'poc_tret': None,
             'kraj_tret': None,
             'desciption':'Returns a single note object'
