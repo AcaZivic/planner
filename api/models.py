@@ -123,7 +123,7 @@ class Reservation(models.Model):
 
     
     izbor_tretmana = models.CharField(
-        choices= Pricelist.get_all_pricelist(Pricelist) ,
+        choices= Pricelist.get_all_tretmans() ,
         default='MP',
         max_length=3
     )
