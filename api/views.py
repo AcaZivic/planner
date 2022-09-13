@@ -4,7 +4,7 @@
 # from django.http import JsonResponse
 
 from ast import Try
-from asyncio.windows_events import NULL
+# from asyncio.windows_events import NULL
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Pricelist, Reservation
