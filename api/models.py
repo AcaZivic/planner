@@ -99,16 +99,26 @@ class Reservation(models.Model):
 
     # IZBOR RADNIKA ATRIBUT (
     # Uzimamo usernameove svih korisnika  
-    pom_radnici = get_user_model()
-    svi_radnici = [x['username'] for x in[a for a in pom_radnici.objects.values('username')]]
+    tuple_radnika = [
+        ('S0','Suza'),
+        ('A1','Andjela')
+    ]
+    # pom_radnici = get_user_model()
+    # svi_radnici = [x['username'] for x in[a for a in pom_radnici.objects.values('username')]]
+    # izb_pom = [(y[0]+str(x),y)for x,y in enumerate(svi_radnici)]
+    # id_radnika = [x for x,y in izb_pom]
 
-    izb_pom = [(y[0]+str(x),y)for x,y in enumerate(svi_radnici)]
-    id_radnika = [x for x,y in izb_pom]
     izbor_radnika = models.CharField(
         max_length=2,
-        choices=izb_pom,
-        default=id_radnika[0],
+        choices=tuple_radnika,
+        default="S0",
     )
+    # izbor_radnika = models.CharField(
+    #     max_length=2,
+    #     choices=izb_pom,
+    #     default="id_radnika[0]",
+    # )
+    #default = id_radnika[0]
     
     # IZBOR TRETMANA ATRIBUT
 
@@ -146,8 +156,8 @@ class Reservation(models.Model):
     
     
     # METODE
-    def get_all_staff(self):
-        return self.izb_pom
+    # def get_all_staff(self):
+    #     return self.izb_pom
 
     def get_all_reservations(self):
         query_reservation = self._meta.model.objects.values('id','izbor_tretmana','datum_tret','poc_tret','kraj_tret')
@@ -155,10 +165,10 @@ class Reservation(models.Model):
 
     def __str__(self):
         pom = [y for x,y in Pricelist.get_all_tretmans() if x==self.izbor_tretmana]
-        pom2 = [y for x,y in self.izb_pom if x==self.izbor_radnika]
+        # pom2 = [y for x,y in self.izb_pom if x==self.izbor_radnika]
 
-        # {self.svi_radnici} {self.id_radnika[0]} } {str(pom2[0])} - {vreme_lista(self.pom_sati,self.pom_min)} - {Pricelist.get_all_pricelist(Pricelist)} -{dict(self.get_all_staff())}
-        return f" {str(pom[0])} - {self.ime_klijenta} - {self.napomena[0:20]} - {pom2[0]} "
+        # {self.svi_radnici} {self.id_radnika[0]} } {str(pom2[0])} - {vreme_lista(self.pom_sati,self.pom_min)} - {Pricelist.get_all_pricelist(Pricelist)} -{dict(self.get_all_staff())} -{pom2[0]}
+        return f" {str(pom[0])} - {self.ime_klijenta} - {self.napomena[0:20]} -  "
     
 
     class Meta:
