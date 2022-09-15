@@ -168,8 +168,8 @@ class Reservation(models.Model):
         pom = [y for x,y in Pricelist.get_all_tretmans() if x==self.izbor_tretmana]
         pom2 = [y for x,y in self.izb_pom if x==self.izbor_radnika]
 
-        # {self.svi_radnici} {self.id_radnika[0]} } {str(pom2[0])} - {vreme_lista(self.pom_sati,self.pom_min)} - {Pricelist.get_all_pricelist(Pricelist)} -{dict(self.get_all_staff())} 
-        return f" {str(pom[0])} - {self.ime_klijenta} - {self.napomena[0:20]} - {pom2[0]}  "
+        # {self.svi_radnici} {self.id_radnika[0]} } {str(pom2[0])} - {vreme_lista(self.pom_sati,self.pom_min)} - {Pricelist.get_all_pricelist(Pricelist)} -{dict(self.get_all_staff())} {pom2[0]} 
+        return f" {str(pom[0])} - {self.ime_klijenta} - {self.napomena[0:20]} -  {pom2} "
     
 
     class Meta:
