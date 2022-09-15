@@ -92,6 +92,7 @@ class Pricelist(models.Model):
     
 class Reservation(models.Model):
     
+    
     # IME KLIJENTA ATRIBUT
     ime_klijenta = models.TextField(
         max_length=25,
@@ -107,9 +108,7 @@ class Reservation(models.Model):
         choices=addModels.get_users(),
         default=addModels.get_users_id()[0],
     )
-    
     # IZBOR TRETMANA ATRIBUT
-
     
     izbor_tretmana = models.CharField(
         choices= Pricelist.get_all_tretmans() ,
