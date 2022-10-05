@@ -68,7 +68,7 @@ def getRoutes(request):
             'desciption': 'Update an existing note with data sent in put request'
         },
         {
-            'Endpoint':'/reservation/id/delete',
+            'Endpoint':'/reservations/id/delete',
             'method':'DELETE',
             'ime_klijenta': {'ime_klijenta':""},
             'izbor_radnika':{'izbor_radnika':""},
